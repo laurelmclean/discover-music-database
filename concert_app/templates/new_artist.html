@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Artist</h1>
+
+<form method="POST" action="{{ url_for('main.new_artist') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please enter the artist information:</legend>
+
+        {{ form.name.label }}
+        {{ form.name }}
+        
+        {{ form.hometown.label }}
+        {{ form.hometown }}
+
+        {{ form.genre.label }}
+        {{ form.genre }}
+
+        {{ form.biography.label }}
+        {{ form.biography }}
+
+        {{ form.image.label }}
+        {{ form.image }}
+        
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+
+{% endblock %}

@@ -10,7 +10,7 @@ class ArtistForm(FlaskForm):
 
     name = StringField('Artist Name', validators=[DataRequired()])
     hometown = StringField('Hometown', validators=[DataRequired()])
-    genre = StringField('Hometown', validators=[DataRequired()])
+    genre = StringField('Genre', validators=[DataRequired()])
     biography = StringField('Biography', validators=[DataRequired()])
     image = StringField('Image URL')
     upcoming_concerts = QuerySelectField('Upcoming Concert',

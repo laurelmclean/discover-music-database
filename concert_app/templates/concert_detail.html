@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Upcoming Concert: {{ concert.name }}</h1>
+
+<strong>Price:</strong> {{ concert.price }}
+
+<strong>Date:</strong> {{ concert.date }}
+
+<strong>Venue:</strong> {{ concert.venue }}
+
+<strong>Address:</strong> {{ concert.address }}
+
+<h2>Bands Playing:</h2>
+
+<div class="artist">
+    {% for band in concert.bands_playing %}
+    <div class="band-details">
+        <a href="/artist/{{ artist.id }}"><img src="{{ artist.image }}" alt="{{ artist.name }}" width="200px">
+        <p><strong>{{ artist.name }}</strong></p></a>
+    </div>
+    {% endfor %}
+</div>
+
+
+<h2>Edit Concert</h2>
+
+<form method="POST" action="{{ url_for('main.concert_detail', concert_id=concert.id) }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please update information:</legend>
+
+        {{ form.name.label }}
+        {{ form.name }}
+        
+        {{ form.price.label }}
+        {{ form.price }}
+        
+        {{ form.venue.label }}
+        {{ form.venue }}
+        
+        {{ form.address.label }}
+        {{ form.address }}
+        
+        {{ form.date.label }}
+        {{ form.date }}
+        
+        {{ form.bands_playing.label }}
+        {{ form.bands_playing }}
+        
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}

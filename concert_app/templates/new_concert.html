@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>New Concert</h1>
+
+<form method="POST" action="{{ url_for('main.new_concert') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Please enter concert information:</legend>
+
+        {{ form.name.label }}
+        {{ form.name }}
+        
+        {{ form.price.label }}
+        {{ form.price }}
+        
+        {{ form.venue.label }}
+        {{ form.venue }}
+        
+        {{ form.address.label }}
+        {{ form.address }}
+        
+        {{ form.date.label }}
+        {{ form.date }}
+
+        {{ form.bands_playing.label }}
+        {{ form.bands_playing }}
+        
+        {{ form.submit }}
+        
+    </fieldset>
+</form>
+
+
+{% endblock %}
