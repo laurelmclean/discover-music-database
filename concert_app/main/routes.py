@@ -1,7 +1,8 @@
 from flask import Blueprint, request, render_template, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from datetime import date, datetime
 from concert_app.models import Artist, Concert, User
-from concert_app.forms import ArtistForm, ConcertForm
+from concert_app.main.forms import ArtistForm, ConcertForm
 
 from concert_app.extensions import app, db
 
@@ -19,6 +20,7 @@ def homepage():
     return render_template('home.html', all_concerts=all_concerts)
 
 @main.route('/new_artist', methods=['GET', 'POST'])
+@login_required
 def new_artist():
     """Add a new artist"""
     form = ArtistForm()
@@ -40,6 +42,7 @@ def new_artist():
     return render_template('new_artist.html', form=form)
 
 @main.route('/new_concert', methods=['GET', 'POST'])
+@login_required
 def new_concert():
     """Add new concert"""
     form = ConcertForm()
@@ -105,4 +108,10 @@ def concert_detail(concert_id):
 
     concert = Concert.query.get(concert_id)
     return render_template('concert_detail.html', concert=concert, form=form)
+
+@main.route('/profile/<username>')
+def profile(username):
+    user = User.query.filter_by(username=username).one()
+    return render_template('profile.html', user=user)
+
 

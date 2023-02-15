@@ -1,7 +1,6 @@
 from sqlalchemy_utils import URLType
-
+from flask_login import UserMixin
 from concert_app.extensions import db
-from concert_app.utils import FormEnum
 
 class Artist(db.Model):
     """Artist model."""
@@ -49,8 +48,6 @@ class User(db.Model):
     """User model."""
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False, unique=True)
-    # see if there is an email field
-    email = db.Column(db.String(80), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
     attending = db.relationship(
         'Concert', secondary='user_concert', back_populates='guests_attending')
