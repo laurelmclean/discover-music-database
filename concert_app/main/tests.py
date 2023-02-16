@@ -7,7 +7,7 @@ from concert_app.extensions import app, db, bcrypt
 from concert_app.models import Concert, Artist, User
 
 """
-Run these tests with the command:
+Run these tests with:
 python3 -m unittest concert_app.main.tests
 """
 
