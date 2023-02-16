@@ -44,7 +44,7 @@ artist_concert = db.Table('artist_concert',
 )
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     """User model."""
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False, unique=True)
