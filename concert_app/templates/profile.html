@@ -6,14 +6,12 @@
     Welcome to {{ user.username }}'s profile.
 </p>
 
-<!-- TODO: Display the user's actual favorites here -->
-
 <p>
-    {{ user.username }}'s favorite books are:
+    {{ user.username }} is attending the following concerts:
 
 <ul>
-    {% for book in user.favorite_books %}
-    <li><a href="/book/{{ book.id }}">{{ book.title }}</a></li>
+    {% for concert in user.attending %}
+    <li><a href="/concert/{{ concert.id }}">{{ concert.title }}</a></li>
     {% endfor %}
 </ul>
 </p>

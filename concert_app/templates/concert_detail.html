@@ -3,8 +3,6 @@
 
 <h1>Upcoming Concert: {{ concert.name }}</h1>
 
-<p><img src="{{ concert.image }}" width="250px"></p>
-
 <h2>Price:</h2> 
 <p>${{ concert.price }}</p>
 
@@ -20,6 +18,13 @@
 <h2>Artist Playing:</h2> 
 
 {{ concert.artist_playing }}
+
+<form action="/attending/{{ concert.id }}" method="POST">
+    <input type="submit" value="Attend this Concert">
+</form>
+<form action="/unattend/{{ concert.id }}" method="POST">
+    <input type="submit" value="Can't Attend">
+</form>
 
 <h2>Edit Concert</h2>
 
@@ -42,9 +47,6 @@
         
         {{ form.date.label }}
         {{ form.date }}
-
-        {{ form.image.label }}
-        {{ form.image }}
         
         {{ form.artist_playing.label }}
         {{ form.artist_playing }}

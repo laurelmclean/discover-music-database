@@ -66,7 +66,6 @@ def new_concert():
         new_concert = Concert(
             name=form.name.data,
             price=form.price.data,
-            image=form.image.data,
             venue=form.venue.data,
             address=form.address.data,
             date=form.date.data,
@@ -111,7 +110,6 @@ def concert_detail(concert_id):
     if form.validate_on_submit():
         concert.name = form.name.data,
         concert.price = form.price.data,
-        concert.image = form.image.data,
         concert.venue = form.venue.data,
         concert.address = form.address.data,
         concert.date = form.date.data,
@@ -124,7 +122,7 @@ def concert_detail(concert_id):
         return redirect(url_for('main.artist_detail', concert_id=concert.id))
 
     concert = Concert.query.get(concert_id)
-    return render_template('concert_details.html', concert=concert, form=form)
+    return render_template('concert_detail.html', concert=concert, form=form)
 
 @main.route('/profile/<username>')
 def profile(username):
@@ -132,3 +130,58 @@ def profile(username):
     return render_template('profile.html', user=user)
 
 
+@main.route('/attending/<concert_id>', methods=['POST'])
+@login_required
+def attending(concert_id):
+    """Add concert to user attending list"""
+    concert = Concert.query.get(concert_id)
+    if concert in current_user.attending:
+        flash('You are already attending this concert.')
+    else:
+        current_user.attending.append(concert)
+        db.session.add(current_user)
+        db.session.commit()
+        flash("Added concert to attending")
+    return redirect(url_for('main.concert_detail', concert_id=concert.id))
+
+@main.route('/unattend/<concert_id>', methods=['POST'])
+@login_required
+def unattend(concert_id):
+    """Remove concert from user attending list"""
+    concert = Concert.query.get(concert_id)
+    if concert not in current_user.attending:
+        flash('This concert was not in your attending list.')
+    else:
+        current_user.attending.remove(concert)
+        db.session.add(current_user)
+        db.session.commit()
+        flash('Concert removed from your attending list.')
+    return redirect(url_for('main.concert_detail', concert_id=concert.id))
+
+@main.route('/favourite/<artist_id>', methods=['POST'])
+@login_required
+def favourite(artist_id):
+    """Add Artist to user favourite list"""
+    artist = Artist.query.get(artist_id)
+    if artist in current_user.favourites:
+        flash('This artist is already in your favourites.')
+    else:
+        current_user.favourites.append(artist)
+        db.session.add(current_user)
+        db.session.commit()
+        flash("Added artist to favourites.")
+    return redirect(url_for('main.artist_detail', artist_id=artist.id))
+
+@main.route('/unfavourite/<artist_id>', methods=['POST'])
+@login_required
+def unfavourite(artist_id):
+    """Remove Artist from user favourite list"""
+    artist = Artist.query.get(artist_id)
+    if artist not in current_user.favourites:
+        flash('This artist was not in your favourites.')
+    else:
+        current_user.favourites.remove(artist)
+        db.session.add(current_user)
+        db.session.commit()
+        flash('Artist removed from your favourites list.')
+    return redirect(url_for('main.artist_detail', artist_id=artist.id))

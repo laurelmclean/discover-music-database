@@ -22,7 +22,6 @@ class ConcertForm(FlaskForm):
     """Form for adding/updating a Concert."""
 
     name = StringField('Concert Name', validators=[DataRequired()])
-    image = StringField('Image URL')
     price = FloatField('Price', validators=[DataRequired()])
     venue = StringField('Venue Name', validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
