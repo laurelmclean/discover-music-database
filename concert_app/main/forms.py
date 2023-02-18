@@ -22,10 +22,11 @@ class ConcertForm(FlaskForm):
     """Form for adding/updating a Concert."""
 
     name = StringField('Concert Name', validators=[DataRequired()])
+    image = StringField('Image URL')
     price = FloatField('Price', validators=[DataRequired()])
     venue = StringField('Venue Name', validators=[DataRequired()])
     address = StringField('Address', validators=[DataRequired()])
     date = DateField('Concert Date', validators=[DataRequired()])
-    bands_playing = QuerySelectField('Bands Playing',
+    artist_playing = QuerySelectField('Artist Playing',
                                          query_factory=lambda: Artist.query, allow_blank=True)
     submit = SubmitField('Submit')

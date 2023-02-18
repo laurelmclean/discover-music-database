@@ -3,13 +3,24 @@
 
 <h1>Artist profile - {{ artist.name }}</h1>
 
-<p><img src="{{ artist.image }}" width="250px"></p>
+<p><img src="{{ artist.image }}" width="400px"></p>
 
 <p><strong>Genre:</strong> {{ artist.genre }}</p>
 
 <p><strong>Hometown:</strong> {{ artist.hometown }}</p>
 
 <p><strong>Biography:</strong> {{ artist.biography }}</p>
+
+<h2>Upcoming Concerts</h2>
+
+<div class="concert">
+    {% for concert in artist.upcoming_concerts %}
+    <div class="concert-details">
+        <a href="/concert/{{ concert.id }}">
+            <p><strong>{{ concert.title }}</strong></p></a>
+    </div>
+    {% endfor %}
+</div>
 
 
 <h2>Edit artist</h2>

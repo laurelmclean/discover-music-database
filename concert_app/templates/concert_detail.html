@@ -3,25 +3,23 @@
 
 <h1>Upcoming Concert: {{ concert.name }}</h1>
 
-<strong>Price:</strong> {{ concert.price }}
+<p><img src="{{ concert.image }}" width="250px"></p>
 
-<strong>Date:</strong> {{ concert.date }}
+<h2>Price:</h2> 
+<p>${{ concert.price }}</p>
 
-<strong>Venue:</strong> {{ concert.venue }}
+<h2>Date:</h2> 
+{{ concert.date }}
 
-<strong>Address:</strong> {{ concert.address }}
+<h2>Venue:</h2> 
+{{ concert.venue }}
 
-<h2>Bands Playing:</h2>
+<h2>Address:</h2> 
+{{ concert.address }}
 
-<!-- <div class="artist">
-    {% for band in concert.bands_playing %}
-    <div class="band-details">
-        <a href="/artist/{{ artist.id }}"><img src="{{ artist.image }}" alt="{{ artist.name }}" width="200px">
-        <p><strong>{{ artist.name }}</strong></p></a>
-    </div>
-    {% endfor %}
-</div> -->
+<h2>Artist Playing:</h2> 
 
+{{ concert.artist_playing }}
 
 <h2>Edit Concert</h2>
 
@@ -44,9 +42,12 @@
         
         {{ form.date.label }}
         {{ form.date }}
+
+        {{ form.image.label }}
+        {{ form.image }}
         
-        {{ form.bands_playing.label }}
-        {{ form.bands_playing }}
+        {{ form.artist_playing.label }}
+        {{ form.artist_playing }}
         
         {{ form.submit }}
     </fieldset>

@@ -10,8 +10,7 @@ class Artist(db.Model):
     image = db.Column(URLType)
     genre = db.Column(db.String(80), nullable=False)
     biography = db.Column(db.String(250), nullable=False)
-    upcoming_concerts = db.relationship(
-        'Concert', secondary='artist_concert', back_populates='bands_playing')
+    upcoming_concerts = db.relationship('Concert', back_populates='artist_playing')
 
     def __str__(self):
         return f'{self.name}'
@@ -22,13 +21,15 @@ class Artist(db.Model):
 class Concert(db.Model):
     """Concert model."""
     id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(URLType)
     name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Float(precision=2), nullable=False)
     venue = db.Column(db.String(80), nullable=False)
     address = db.Column(db.String(80), nullable=False)
     date = db.Column(db.Date)
-    bands_playing = db.relationship(
-        'Artist', secondary='artist_concert', back_populates='upcoming_concerts')
+    artist_id = db.Column(
+        db.Integer, db.ForeignKey('artist.id'), nullable=False)
+    artist_playing = db.relationship('Artist', back_populates='upcoming_concerts')
     guests_attending = db.relationship(
         'User', secondary='user_concert', back_populates='attending')
 
@@ -37,12 +38,6 @@ class Concert(db.Model):
 
     def __repr__(self):
         return f'{self.name}'
-
-artist_concert = db.Table('artist_concert',
-    db.Column('artist_id', db.Integer, db.ForeignKey('artist.id')),
-    db.Column('concert_id', db.Integer, db.ForeignKey('concert.id'))
-)
-
 
 class User(UserMixin, db.Model):
     """User model."""

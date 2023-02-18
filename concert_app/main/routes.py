@@ -19,6 +19,21 @@ def homepage():
     print(all_concerts)
     return render_template('home.html', all_concerts=all_concerts)
 
+
+@main.route('/concert')
+def all_concerts():
+    """Concert route"""
+    all_concerts = Concert.query.all()
+    print(all_concerts)
+    return render_template('all_concerts.html', all_concerts=all_concerts)
+
+@main.route('/artist')
+def all_artists():
+    """Artists route"""
+    all_artists = Artist.query.all()
+    print(all_artists)
+    return render_template('all_artists.html', all_artists=all_artists)
+
 @main.route('/new_artist', methods=['GET', 'POST'])
 @login_required
 def new_artist():
@@ -51,10 +66,11 @@ def new_concert():
         new_concert = Concert(
             name=form.name.data,
             price=form.price.data,
+            image=form.image.data,
             venue=form.venue.data,
             address=form.address.data,
             date=form.date.data,
-            bands_playing=form.bands_playing.data
+            artist_playing=form.artist_playing.data
         )
         db.session.add(new_concert)
         db.session.commit()
@@ -95,19 +111,20 @@ def concert_detail(concert_id):
     if form.validate_on_submit():
         concert.name = form.name.data,
         concert.price = form.price.data,
+        concert.image = form.image.data,
         concert.venue = form.venue.data,
         concert.address = form.address.data,
         concert.date = form.date.data,
-        concert.bands_playing = form.bands_playing.data
+        concert.artist_playing = form.artist_playing.data
 
         db.session.add(concert)
         db.session.commit()
 
         flash('Concert updated successfully.')
-        return redirect(url_for('main.concert_detail', concert_id=concert.id))
+        return redirect(url_for('main.artist_detail', concert_id=concert.id))
 
     concert = Concert.query.get(concert_id)
-    return render_template('concert_detail.html', concert=concert, form=form)
+    return render_template('concert_details.html', concert=concert, form=form)
 
 @main.route('/profile/<username>')
 def profile(username):
