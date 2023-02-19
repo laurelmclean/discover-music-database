@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Upcoming Concert: {{ concert.name }}</h1>
+<h1>{{ concert.name }}</h1>
 
 <h2>Price:</h2> 
 <p>${{ concert.price }}</p>
@@ -17,14 +17,30 @@
 
 <h2>Artist Playing:</h2> 
 
-{{ concert.artist_playing }}
+<a href="/artist/{{ concert.artist_playing.id }}">{{ concert.artist_playing }}</a>
 
-<form action="/attending/{{ concert.id }}" method="POST">
-    <input type="submit" value="Attend this Concert">
-</form>
-<form action="/unattend/{{ concert.id }}" method="POST">
-    <input type="submit" value="Can't Attend">
-</form>
+{% if current_user.is_authenticated %}
+    {% if concert not in current_user.attending %}
+        <form action="/attending/{{ concert.id }}" method="POST">
+            <input type="submit" value="Attend this Concert">
+        </form>
+    {% else %}
+        <form action="/unattend/{{ concert.id }}" method="POST">
+            <input type="submit" value="Can't Attend">
+        </form>
+    {% endif %}
+{% endif %}
+
+<h2>Attending:</h2>
+{% if concert.guests_attending %}
+<ul>
+    {% for guest in concert.guests_attending %}
+    <li><a href="/profile/{{ guest.id }}">{{ guest.username }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<h4>{{ concert.name }} does not have anyone attending!</h4>
+{% endif%}
 
 <h2>Edit Concert</h2>
 

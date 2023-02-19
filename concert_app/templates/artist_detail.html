@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Artist profile - {{ artist.name }}</h1>
+<h1>{{ artist.name }}</h1>
 
 <p><img src="{{ artist.image }}" width="400px"></p>
 
@@ -13,22 +13,38 @@
 
 <h2>Upcoming Concerts</h2>
 
-<div class="concert">
-    {% for concert in artist.upcoming_concerts %}
-    <div class="concert-details">
-        <a href="/concert/{{ concert.id }}">
-            <p><strong>{{ concert.title }}</strong></p></a>
-    </div>
+{% if artist.upcoming_concerts %}
+    <ul>
+        {% for concert in artist.upcoming_concerts %}
+        <li><a href="/concert/{{ concert.id }}">{{ concert.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <h4>{{ artist.name }} is not playing any upcoming concerts! </h4>
+{% endif%}
+
+{% if current_user.is_authenticated %}
+    {% if artist not in current_user.favorites %}
+        <form action="/favourite/{{ artist.id }}" method="POST">
+            <input type="submit" value="Favourite">
+        </form>
+    {% else %}
+        <form action="/unfavourite/{{ artist.id }}" method="POST">
+            <input type="submit" value="Unfavourite">
+        </form>
+    {% endif %}
+{% endif %}
+
+<h2>Fans</h2>
+{% if artist.fans %}
+<ul>
+    {% for fan in artist.fans %}
+    <li><a href="/profile/{{ fan.id }}">{{ fan.username }}</a></li>
     {% endfor %}
-</div>
-
-<form action="/favourite/{{ artist.id }}" method="POST">
-    <input type="submit" value="Favourite">
-</form>
-<form action="/unfavourite/{{ artist.id }}" method="POST">
-    <input type="submit" value="Unfavourite">
-</form>
-
+</ul>
+{% else %}
+<h4>{{ artist.name }} does not have any fans! </h4>
+{% endif%}
 
 <h2>Edit artist</h2>
 
