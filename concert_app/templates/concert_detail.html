@@ -3,6 +3,8 @@
 
 <h1>{{ concert.name }}</h1>
 
+<p><img src="{{ concert.image }}" width="400px"></p>
+
 <h2>Price:</h2> 
 <p>${{ concert.price }}</p>
 
@@ -66,6 +68,9 @@
         
         {{ form.artist_playing.label }}
         {{ form.artist_playing }}
+
+        {{ form.image.label }}
+        {{ form.image }}
         
         {{ form.submit }}
     </fieldset>

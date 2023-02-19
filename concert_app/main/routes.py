@@ -65,6 +65,7 @@ def new_concert():
     if form.validate_on_submit():
         new_concert = Concert(
             name=form.name.data,
+            image=form.image.data,
             price=form.price.data,
             venue=form.venue.data,
             address=form.address.data,
@@ -108,6 +109,7 @@ def concert_detail(concert_id):
 
     if form.validate_on_submit():
         concert.name = form.name.data
+        concert.image = form.image.data
         concert.price = form.price.data
         concert.venue = form.venue.data
         concert.address = form.address.data

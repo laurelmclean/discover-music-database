@@ -5,6 +5,7 @@
 
 {% for artist in all_artists %}
 <div class="artist">
+    <img src="{{ artist.image }}" width="200px">
     <a href="/artist/{{ artist.id }}">{{ artist.name }}</a>
 </div>
 {% endfor %}

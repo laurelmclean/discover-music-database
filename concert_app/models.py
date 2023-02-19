@@ -13,7 +13,7 @@ class Artist(db.Model):
     upcoming_concerts = db.relationship('Concert', back_populates='artist_playing')
     fans = db.relationship(
         'User', secondary='user_artist', back_populates='favourites')
-        
+
     def __str__(self):
         return f'{self.name}'
 
@@ -23,6 +23,7 @@ class Artist(db.Model):
 class Concert(db.Model):
     """Concert model."""
     id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(URLType)
     name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Float(precision=2), nullable=False)
     venue = db.Column(db.String(80), nullable=False)

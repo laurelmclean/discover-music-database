@@ -5,6 +5,7 @@
 
 {% for concert in all_concerts %}
 <div class="concert">
+    <img src="{{ concert.image }}" width="200px">
     <a href="/concert/{{ concert.id }}">{{ concert.name }}</a>
     <p><strong>Date:</strong> {{ concert.date }}</p>
 </div>
