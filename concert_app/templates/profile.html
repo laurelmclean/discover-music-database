@@ -2,18 +2,36 @@
 
 {% block content %}
 
-<p>
-    Welcome to {{ user.username }}'s profile.
-</p>
+<h1>
+    {{ user.username }}'s profile
+</h1>
 
-<p>
-    {{ user.username }} is attending the following concerts:
+{% if current_user.favourites %}
+    <h3>
+        {{ user.username }} favourited these artists:
 
-<ul>
-    {% for concert in user.attending %}
-    <li><a href="/concert/{{ concert.id }}">{{ concert.title }}</a></li>
-    {% endfor %}
-</ul>
-</p>
+    <ul>
+        {% for favourite in user.favourites %}
+        <li><a href="/artist/{{ favourite.id }}">{{ favourite.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>{{ user.username }} has not favourited any artists! </h3>
+{% endif%}
+</h3>
+
+{% if current_user.attending %}
+    <h3>
+        {{ user.username }} is attending the following concerts:
+
+        <ul>
+            {% for concert in user.attending %}
+            <li><a href="/concert/{{ concert.id }}">{{ concert.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </h3>
+{% else %}
+    <h3>{{ user.username }} is not attending any concerts! </h3>
+{% endif%}
 
 {% endblock %}
