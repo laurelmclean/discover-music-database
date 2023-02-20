@@ -3,11 +3,18 @@
 
 <h1>All Artists</h1>
 
-{% for artist in all_artists %}
 <div class="artist">
-    <img src="{{ artist.image }}" width="200px">
-    <a href="/artist/{{ artist.id }}">{{ artist.name }}</a>
-</div>
+    <ul>
+{% for artist in all_artists %}
+
+    <li>
+        <a href="/artist/{{ artist.id }}">
+        <img src="{{ artist.image }}" width="200px">
+        {{ artist.name }}</a>
+    </li>
+
 {% endfor %}
+</ul>
+</div>
 
 {% endblock %}

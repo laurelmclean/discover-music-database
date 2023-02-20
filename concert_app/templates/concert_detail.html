@@ -24,7 +24,7 @@
 {% if current_user.is_authenticated %}
     {% if concert not in current_user.attending %}
         <form action="/attending/{{ concert.id }}" method="POST">
-            <input type="submit" value="Attend this Concert">
+            <input type="submit" value="🎵 Attend this Concert 🎵">
         </form>
     {% else %}
         <form action="/unattend/{{ concert.id }}" method="POST">

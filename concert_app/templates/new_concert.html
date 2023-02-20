@@ -7,33 +7,30 @@
     {{ form.csrf_token }}
     <fieldset>
         <legend>Please enter concert information:</legend>
-    <div class="form-group">
+
         {{ form.name.label }}
-        {{ form.name(class_="form-control", size=20)}}
-    </div>
-    <div class="form-group">
+        {{ form.name }}
+
         {{ form.price.label }}
-        {{ form.price(class_="form-control", size=20)}}
-    </div>
-    <div class="form-group">
+        {{ form.price }}
+
         {{ form.venue.label }}
-        {{ form.venue(class_="form-control", size=20) }}
-    </div>
-    <div class="form-group">
+        {{ form.venue }}
+
         {{ form.address.label }}
-        {{ form.address(class_="form-control", size=20)}}
-    </div>
-    <div class="form-group">
+        {{ form.address }}
+
         {{ form.date.label }}
-        {{ form.date(class_="form-control", size=20) }}
-    </div>
-    <div class="form-group">
+        {{ form.date }}
+
         {{ form.artist_playing.label }}
-        {{ form.artist_playing(class_="form-select", size=20) }}
-    </div>
+        {{ form.artist_playing }}
+
         {{ form.image.label }}
         {{ form.image }}
-        {{ form.submit}}
+
+        {{ form.submit }}
+
     </fieldset>
 </form>
 

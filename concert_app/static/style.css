@@ -1,0 +1,153 @@
+body {
+    background-color: #67acf8;
+    font-size: 18px;
+    color: #041c36;
+    font-family: Helvetica, sans-serif;
+    line-height: 1.5;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#content {
+    width: 70%;
+    background-color: white;
+    padding: 20px;
+}
+
+nav {
+    list-style: none;
+    display: inline;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+body, html {
+    /* makes the page full height of window */
+    height: 100%;
+}
+
+nav {
+    font-size: 1.25em;
+    display: inline;
+    padding: 0 0.7em 0 0;
+    margin: 0;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+fieldset * {
+    margin: 5px;
+}
+
+fieldset input {
+    padding: 5px;
+}
+
+input[type=submit] {
+    padding: 10px 20px;
+    align-self: flex-end;
+}
+
+li.error {
+    color: red;
+}
+
+h1 {
+    color: #211209;
+    text-align: left;
+    /* Used a custom font from Google called Oswald, but set helvetica as a fallback font in case oswald is not available in certain browsers */
+    font-family: 'Oswald', helvetica, sans-serif;
+    line-height: 0;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    font-family: Helvetica, sans-serif;
+    color: #211209;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+h3 {
+    color: #211209;
+}
+
+button {
+    /* I made this a block element and set the margin to auto to centre the button */
+    margin: auto;
+    display: block;
+    background: #041c36;
+    color: white;
+    /* I chose to apply a border to the button so when i hover over the button and the color changes, the border will remain */
+    border-width: 1px;
+    border-style: solid;
+    border-color: #041c36;
+    /* The border radius rounded the corners of the button */
+    border-radius: 30px;
+    padding: 20px 24px;
+    font-size: 18px;
+    
+}
+/* Hover changes the button color and text colour as well as the cursor type 
+when hovering the cursor over the button. 
+I did this to make the page seem more interactive and less static */
+button:hover {
+    background: white;
+    color: #041c36;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #211209;
+}
+
+.concert {
+    /* list-style: none removes the bullet points on list items */
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* Align text center underneath each album cover image */
+    text-align: center;
+    color: white;
+    font-style: italic;
+    /* I set the padding and margin to 0 to remove the default left margin assigned by ul */
+    padding: 0;
+    margin: 0em;
+}
+
+.artist ul {
+    /* list-style: none removes the bullet points on list items */
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* Align text center underneath each album cover image */
+    text-align: center;
+    color: white;
+    font-style: italic;
+    /* I set the padding and margin to 0 to remove the default left margin assigned by ul */
+    padding: 0;
+    margin: 0em;
+}
+
+img {
+    display: block;
+    margin: auto;
+    /* Max width 100% ensures my image won't stretch any wider than the width I assigned in HTML*/
+    max-width: 100%;
+    /* I added padding to the bottom of the image to add space between the image and figcaption */
+    padding: 0 0 1em 0;
+}
