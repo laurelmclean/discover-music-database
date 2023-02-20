@@ -33,6 +33,12 @@
     {% endif %}
 {% endif %}
 
+{% if current_user.is_authenticated %}
+<form action="/edit_concert/{{ concert.id }}">
+    <input type="submit" value="Edit">
+</form>
+{% endif %}
+
 <h2>Attending:</h2>
 {% if concert.guests_attending %}
 <ul>
@@ -43,37 +49,5 @@
 {% else %}
 <h4>{{ concert.name }} does not have anyone attending!</h4>
 {% endif%}
-
-<h2>Edit Concert</h2>
-
-<form method="POST" action="{{ url_for('main.concert_detail', concert_id=concert.id) }}">
-    {{ form.csrf_token }}
-    <fieldset>
-        <legend>Please update information:</legend>
-
-        {{ form.name.label }}
-        {{ form.name }}
-        
-        {{ form.price.label }}
-        {{ form.price }}
-        
-        {{ form.venue.label }}
-        {{ form.venue }}
-        
-        {{ form.address.label }}
-        {{ form.address }}
-        
-        {{ form.date.label }}
-        {{ form.date }}
-        
-        {{ form.artist_playing.label }}
-        {{ form.artist_playing }}
-
-        {{ form.image.label }}
-        {{ form.image }}
-        
-        {{ form.submit }}
-    </fieldset>
-</form>
 
 {% endblock %}

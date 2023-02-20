@@ -35,6 +35,12 @@
     {% endif %}
 {% endif %}
 
+{% if current_user.is_authenticated %}
+    <form action="/edit_artist/{{ artist.id }}">
+        <input type="submit" value="Edit">
+    </form>
+{% endif %}
+
 <h2>Fans</h2>
 {% if artist.fans %}
 <ul>
@@ -46,30 +52,5 @@
 <h4>{{ artist.name }} does not have any fans! </h4>
 {% endif%}
 
-<h2>Edit artist</h2>
-
-<form method="POST" action="{{ url_for('main.artist_detail', artist_id=artist.id) }}">
-    {{ form.csrf_token }}
-    <fieldset>
-        <legend>Please update information:</legend>
-
-            {{ form.name.label }}
-            {{ form.name }}
-
-            {{ form.hometown.label }}
-            {{ form.hometown }}
-
-            {{ form.genre.label }}
-            {{ form.genre }}
-
-            {{ form.biography.label }}
-            {{ form.biography }}
-
-            {{ form.image.label }}
-            {{ form.image }}
-
-            {{ form.submit }}
-    </fieldset>
-</form>
 
 {% endblock %}

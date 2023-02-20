@@ -86,10 +86,18 @@ def artist_detail(artist_id):
     artist = Artist.query.get(artist_id)
     form = ArtistForm(obj=artist)
 
+    return render_template('artist_detail.html', artist=artist, form=form)
+
+@main.route('/edit_artist/<artist_id>', methods=['GET', 'POST'])
+def edit_artist(artist_id):
+    """Edit Artist details"""
+    artist = Artist.query.get(artist_id)
+    form = ArtistForm(obj=artist)
+
     if form.validate_on_submit():
         artist.name = form.name.data
-        artist.hometown = form.hometown.data
         artist.image = form.image.data
+        artist.hometown = form.hometown.data
         artist.genre = form.genre.data
         artist.biography = form.biography.data
 
@@ -98,12 +106,22 @@ def artist_detail(artist_id):
 
         flash('Artist updated successfully.')
         return redirect(url_for('main.artist_detail', artist_id=artist.id))
-    artist = Artist.query.get(artist_id)
-    return render_template('artist_detail.html', artist=artist, form=form)
+
+    return render_template('edit_artist.html', artist=artist, form=form)
+
 
 @main.route('/concert/<concert_id>', methods=['GET', 'POST'])
 def concert_detail(concert_id):
     """Concert details"""
+    concert = Concert.query.get(concert_id)
+    form = ConcertForm(obj=concert)
+
+    return render_template('concert_detail.html', concert=concert, form=form)
+
+
+@main.route('/edit_concert/<concert_id>', methods=['GET', 'POST'])
+def edit_concert_detail(concert_id):
+    """Edit Concert details"""
     concert = Concert.query.get(concert_id)
     form = ConcertForm(obj=concert)
 
@@ -122,7 +140,7 @@ def concert_detail(concert_id):
         flash('Concert updated successfully.')
         return redirect(url_for('main.concert_detail', concert_id=concert.id))
 
-    return render_template('concert_detail.html', concert=concert, form=form)
+    return render_template('edit_concert.html', concert=concert, form=form)
 
 @main.route('/profile/<username>')
 def profile(username):
