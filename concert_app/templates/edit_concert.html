@@ -5,7 +5,7 @@
 
 <h2>Edit Concert</h2>
 
-<form method="POST" action="{{ url_for('main.concert_detail', concert_id=concert.id) }}">
+<form method="POST" action="{{ url_for('main.edit_concert', concert_id=concert.id) }}">
     {{ form.csrf_token }}
     <fieldset>
         <legend>Please update information:</legend>

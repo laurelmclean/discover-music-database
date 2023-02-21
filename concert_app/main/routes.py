@@ -81,32 +81,27 @@ def new_concert():
     return render_template('new_concert.html', form=form)
 
 @main.route('/artist/<artist_id>', methods=['GET', 'POST'])
+@login_required
 def artist_detail(artist_id):
     """Artist details"""
     artist = Artist.query.get(artist_id)
-    form = ArtistForm(obj=artist)
+    return render_template('artist_detail.html', artist=artist)
 
-    return render_template('artist_detail.html', artist=artist, form=form)
 
-@main.route('/edit_artist/<artist_id>', methods=['GET', 'POST'])
+@main.route('/artist/<artist_id>/edit', methods=['GET', 'POST'])
+@login_required
 def edit_artist(artist_id):
     """Edit Artist details"""
     artist = Artist.query.get(artist_id)
     form = ArtistForm(obj=artist)
-
     if form.validate_on_submit():
-        artist.name = form.name.data
-        artist.image = form.image.data
-        artist.hometown = form.hometown.data
-        artist.genre = form.genre.data
-        artist.biography = form.biography.data
-
+        form.populate_obj(artist)
         db.session.add(artist)
         db.session.commit()
-
-        flash('Artist updated successfully.')
-        return redirect(url_for('main.artist_detail', artist_id=artist.id))
-
+  
+        flash('Artist was updated successfully')
+        return redirect(url_for('main.artist_detail',artist_id=artist.id))
+    artist = Artist.query.get(artist_id)
     return render_template('edit_artist.html', artist=artist, form=form)
 
 
@@ -114,32 +109,23 @@ def edit_artist(artist_id):
 def concert_detail(concert_id):
     """Concert details"""
     concert = Concert.query.get(concert_id)
-    form = ConcertForm(obj=concert)
-
-    return render_template('concert_detail.html', concert=concert, form=form)
+    return render_template('concert_detail.html', concert=concert)
 
 
-@main.route('/edit_concert/<concert_id>', methods=['GET', 'POST'])
-def edit_concert_detail(concert_id):
+@main.route('/concert/<concert_id>/edit', methods=['GET', 'POST'])
+def edit_concert(concert_id):
     """Edit Concert details"""
     concert = Concert.query.get(concert_id)
     form = ConcertForm(obj=concert)
 
     if form.validate_on_submit():
-        concert.name = form.name.data
-        concert.image = form.image.data
-        concert.price = form.price.data
-        concert.venue = form.venue.data
-        concert.address = form.address.data
-        concert.date = form.date.data
-        concert.artist_playing = form.artist_playing.data
-
+        form.populate_obj(concert)
         db.session.add(concert)
         db.session.commit()
 
-        flash('Concert updated successfully.')
+        flash('Concert was updated successfully')
         return redirect(url_for('main.concert_detail', concert_id=concert.id))
-
+    concert = Concert.query.get(concert_id)
     return render_template('edit_concert.html', concert=concert, form=form)
 
 @main.route('/profile/<username>')

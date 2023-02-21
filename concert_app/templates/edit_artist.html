@@ -2,31 +2,30 @@
 {% block content %}
 
 <h1>{{ artist.name }}</h1>
-<h2>Edit artist</h2>
 
-<form method="POST" action="{{ url_for('main.artist_detail', artist_id=artist.id) }}">
+<h2>Edit Artist</h2>
+
+<form method="POST" action="{{ url_for('main.edit_artist', artist_id=artist.id) }}">
     {{ form.csrf_token }}
     <fieldset>
         <legend>Please update information:</legend>
 
-        {{ form.name.label }}
-        {{ form.name }}
+            {{ form.name.label }}
+            {{ form.name }}
 
-        {{ form.hometown.label }}
-        {{ form.hometown }}
+            {{ form.hometown.label }}
+            {{ form.hometown }}
 
-        {{ form.genre.label }}
-        {{ form.genre }}
+            {{ form.genre.label }}
+            {{ form.genre }}
 
-        {{ form.biography.label }}
-        {{ form.biography }}
+            {{ form.biography.label }}
+            {{ form.biography }}
 
-        {{ form.image.label }}
-        {{ form.image }}
+            {{ form.image.label }}
+            {{ form.image }}
 
-        {{ form.submit }}
+            {{ form.submit }}
     </fieldset>
-
 </form>
-
 {% endblock %}

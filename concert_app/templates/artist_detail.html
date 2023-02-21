@@ -35,11 +35,9 @@
     {% endif %}
 {% endif %}
 
-{% if current_user.is_authenticated %}
-    <form action="/edit_artist/{{ artist.id }}">
-        <input type="submit" value="Edit">
-    </form>
-{% endif %}
+<form action="/artist/{{ artist.id }}/edit" method="post">
+    <input type="submit" value="Edit">
+</form>
 
 <h2>Fans</h2>
 {% if artist.fans %}

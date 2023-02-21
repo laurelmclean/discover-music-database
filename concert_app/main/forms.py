@@ -13,8 +13,6 @@ class ArtistForm(FlaskForm):
     genre = StringField('Genre', validators=[DataRequired()])
     biography = StringField('Biography', validators=[DataRequired()])
     image = StringField('Image URL')
-    upcoming_concerts = QuerySelectField('Upcoming Concert',
-                             query_factory=lambda: Concert.query, allow_blank=True)
     submit = SubmitField('Submit')
 
 

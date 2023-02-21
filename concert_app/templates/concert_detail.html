@@ -33,11 +33,9 @@
     {% endif %}
 {% endif %}
 
-{% if current_user.is_authenticated %}
-<form action="/edit_concert/{{ concert.id }}">
+<form action="/concert/{{ concert.id }}/edit" method="post">
     <input type="submit" value="Edit">
 </form>
-{% endif %}
 
 <h2>Attending:</h2>
 {% if concert.guests_attending %}
