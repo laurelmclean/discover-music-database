@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>All Concerts</h1>
+<h2>All Concerts</h2>
 
-{% for concert in all_concerts %}
 <div class="concert">
-    <img src="{{ concert.image }}" width="200px">
-    <a href="/concert/{{ concert.id }}">{{ concert.name }}</a>
-    <p><strong>Date:</strong> {{ concert.date }}</p>
+    <ul>
+        {% for concert in all_concerts %}
+        <li>
+            <a href="/concert/{{ concert.id }}">
+                <img src="{{ concert.image }}" width="200px">
+                {{ concert.name }}</a>
+        </li>
+
+        {% endfor %}
+    </ul>
 </div>
-{% endfor %}
 
 {% endblock %}

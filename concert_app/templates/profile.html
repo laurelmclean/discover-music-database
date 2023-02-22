@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<h1>
+<h2>
     {{ user.username }}'s profile
-</h1>
+</h2>
 
 {% if current_user.favourites %}
     <h3>
-        {{ user.username }} favourited these artists:
+        Favourite artists:
 
     <ul>
         {% for favourite in user.favourites %}
@@ -22,7 +22,7 @@
 
 {% if current_user.attending %}
     <h3>
-        {{ user.username }} is attending the following concerts:
+        Upcoming concerts:
 
         <ul>
             {% for concert in user.attending %}

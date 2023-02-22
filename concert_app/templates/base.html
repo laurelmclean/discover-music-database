@@ -10,9 +10,9 @@
 
 <body>
     <div id="content">
+        <a href="/"><h1>Discover Music</h1></a>
         <nav>
             <a href="/">Home</a>
-            <div>
                 <a href="/artist">All Artists</a>
                 <a href="/concert">All Concerts</a>
                 {% if current_user.is_authenticated %}
@@ -24,7 +24,6 @@
                 <a href="/signup">Sign Up</a>
                 <a href="/login">Log In</a>
                 {% endif %}
-            </div>
         </nav>
 
         {% for message in get_flashed_messages() %}

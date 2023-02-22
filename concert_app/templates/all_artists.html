@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>All Artists</h1>
+<h2>All Artists</h2>
 
 <div class="artist">
     <ul>
-{% for artist in all_artists %}
-
+    {% for artist in all_artists %}
     <li>
         <a href="/artist/{{ artist.id }}">
         <img src="{{ artist.image }}" width="200px">

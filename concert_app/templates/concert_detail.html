@@ -1,25 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>{{ concert.name }}</h1>
+<h2>{{ concert.name }}</h2>
 
 <p><img src="{{ concert.image }}" width="400px"></p>
 
-<h2>Price:</h2> 
-<p>${{ concert.price }}</p>
+<div class="details">
 
-<h2>Date:</h2> 
-{{ concert.date }}
+    <p><strong>Price:</strong> {{ concert.price }}</p>
 
-<h2>Venue:</h2> 
-{{ concert.venue }}
+    <p><strong>Date:</strong> {{ concert.date }}</p>
 
-<h2>Address:</h2> 
-{{ concert.address }}
+    <p><strong>Venue:</strong> {{ concert.venue }}</p>
 
-<h2>Artist Playing:</h2> 
+    <p><strong>Artist Playing:</p>
+    
+    <a href="/artist/{{ concert.artist_playing.id }}">{{ concert.artist_playing }}</a>
 
-<a href="/artist/{{ concert.artist_playing.id }}">{{ concert.artist_playing }}</a>
+</div>
 
 {% if current_user.is_authenticated %}
     {% if concert not in current_user.attending %}
