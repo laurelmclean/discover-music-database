@@ -6,16 +6,14 @@
 <h2>All Concerts</h2>
 
 <div class="concert">
-    <ul>
         {% for concert in all_concerts %}
-        <li>
+        <section>
             <a href="/concert/{{ concert.id }}">
-                <img src="{{ concert.image }}" width="200px">
+                <img src="{{ concert.image }}" height="250px">
                 {{ concert.name }}</a>
-        </li>
+        </section>
 
         {% endfor %}
-    </ul>
 </div>
 
 {% endblock %}

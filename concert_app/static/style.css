@@ -1,7 +1,6 @@
 body {
     background-color: #67acf8;
     font-size: 18px;
-    color: #041c36;
     font-family: Helvetica, sans-serif;
     line-height: 1.5;
     font-weight: 100;
@@ -14,20 +13,20 @@ body {
     width: 70%;
     background-color: white;
     padding: 20px;
+    color: #041c36;
 }
 
-nav {
-    list-style: none;
-    display: inline;
-    text-align: left;
-    padding: 0;
+
+.header {
+    width: 100%;
+    height: 200px;
+    padding: 20px;
     margin: 0;
+    margin-top: -10px;
+    background-color: #041c36; 
+    color: white
 }
 
-body, html {
-    /* makes the page full height of window */
-    height: 100%;
-}
 
 fieldset {
     display: flex;
@@ -44,100 +43,140 @@ fieldset input {
     padding: 5px;
 }
 
-li.error {
+.error {
     color: red;
 }
 
 h1 {
-    color: #211209;
-    line-height: 0;
+    color: white;
     text-align: left;
-    /* Used a custom font from Google called Oswald, but set helvetica as a fallback font in case oswald is not available in certain browsers */
-    font-family: 'Oswald', helvetica, sans-serif;
-    font-size: 3em;
+    font-family: helvetica, sans-serif;
+    font-size: 4em;
     text-transform: uppercase;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    margin-bottom: 0;
 }
 
 h2 {
     text-align: center;
     font-size: 2em;
     font-family: Helvetica, sans-serif;
-    color: #211209;
+    color: #041c36;
     text-transform: uppercase;
     line-height: 1;
 }
 
 h3 {
-    color: #211209;
+    color: #041c36;
 }
 
 input[type=submit] {
     background: #041c36;
     color: white;
-    /* I chose to apply a border to the button so when i hover over the button and the color changes, the border will remain */
     border-width: 1px;
     border-style: solid;
     border-color: #041c36;
-    /* The border radius rounded the corners of the button */
     border-radius: 20px;
     padding: 10px 14px;
     font-size: 18px;
     
 }
-/* Hover changes the button color and text colour as well as the cursor type 
-when hovering the cursor over the button. 
-I did this to make the page seem more interactive and less static */
+
 input[type=submit]:hover {
     background: white;
     color: #041c36;
     cursor: pointer;
 }
 
-.concert ul{
-    /* list-style: none removes the bullet points on list items */
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    /* Align text center underneath each album cover image */
-    text-align: center;
-    color: white;
-    font-style: italic;
-    /* I set the padding and margin to 0 to remove the default left margin assigned by ul */
-    padding: 0;
-    margin: 0em;
-}
-
-.artist ul{
-    /* list-style: none removes the bullet points on list items */
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    /* Align text center underneath each album cover image */
-    text-align: center;
-    color: white;
-    font-style: italic;
-    /* I set the padding and margin to 0 to remove the default left margin assigned by ul */
-    padding: 0;
-    margin: 0em;
-}
-
 img {
     display: block;
     margin: auto;
-    /* Max width 100% ensures my image won't stretch any wider than the width I assigned in HTML*/
     max-width: 100%;
-    /* I added padding to the bottom of the image to add space between the image and figcaption */
     padding: 0 0 1em 0;
 }
 
-a {
-    color: #211209;
+.header a {
+    color: white;
     text-decoration: none;
 }
 
-a:hover {
+.header a:hover {
     text-decoration: underline;
-    color: #211209;
+    color: white;
+}
+
+.header nav {
+    margin-left: 2em;
+    padding-right: 2em;
+}
+
+.details a {
+    color: #041c36;
+    text-decoration: underline;
+    font-weight: 100;
+}
+
+.details a:hover {
+    font-weight: 400;
+}
+
+.details {
+    text-align: center;
+ }
+
+ .details li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: -30px;
+ }
+
+ .profile a{
+    color: #041c36;
+    text-decoration: none;
+    font-weight: 100;
+ }
+
+ .profile a:hover {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+ .concert a{
+    color: #041c36;
+    text-decoration: none;
+    font-weight: 100;
+ }
+
+ .concert a:hover {
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+ .artist a{
+    color: #041c36;
+    text-decoration: underline;
+    font-weight: 100;
+ }
+
+ .artist a:hover {
+    font-weight: 400;
+}
+
+.concert {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 2em;
+	max-width: 1200px;
+	margin: auto;
+	padding: 2em;
+}
+
+.artist {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 2em;
+	max-width: 1200px;
+	margin: auto;
+	padding: 2em;
 }

@@ -10,19 +10,15 @@
 
         {{ form.username.label }}
         {{ form.username }}
-        <ul>
-            {% for error in form.username.errors %}
-            <li class="error">{{ error }}</li>
-            {% endfor %}
-        </ul>
+        {% for error in form.username.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.password.label }}
         {{ form.password }}
-        <ul>
-            {% for error in form.password.errors %}
-            <li class="error">{{ error }}</li>
-            {% endfor %}
-        </ul>
+        {% for error in form.password.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.submit }}
     </fieldset>

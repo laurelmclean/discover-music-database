@@ -4,16 +4,14 @@
 <h2>All Artists</h2>
 
 <div class="artist">
-    <ul>
     {% for artist in all_artists %}
-    <li>
+    <section>
         <a href="/artist/{{ artist.id }}">
-        <img src="{{ artist.image }}" width="200px">
+        <img src="{{ artist.image }}" height="250px">
         {{ artist.name }}</a>
-    </li>
+    </section>
 
 {% endfor %}
-</ul>
 </div>
 
 {% endblock %}

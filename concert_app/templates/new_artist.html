@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>New Artist</h1>
+<h2>New Artist</h2>
 
 <form method="POST" action="{{ url_for('main.new_artist') }}">
     {{ form.csrf_token }}
@@ -10,18 +10,33 @@
 
         {{ form.name.label }}
         {{ form.name }}
+            {% for error in form.name.errors %}
+            <p class="error">{{ error }}<p>
+            {% endfor %}
         
         {{ form.hometown.label }}
         {{ form.hometown }}
+            {% for error in form.hometown.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
         {{ form.genre.label }}
         {{ form.genre }}
+            {% for error in form.genre.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
         {{ form.biography.label }}
         {{ form.biography }}
+            {% for error in form.biography.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
         {{ form.image.label }}
         {{ form.image }}
+            {% for error in form.image.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
         
         {{ form.submit }}
     </fieldset>

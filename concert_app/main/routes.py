@@ -81,7 +81,6 @@ def new_concert():
     return render_template('new_concert.html', form=form)
 
 @main.route('/artist/<artist_id>', methods=['GET', 'POST'])
-@login_required
 def artist_detail(artist_id):
     """Artist details"""
     artist = Artist.query.get(artist_id)
@@ -113,6 +112,7 @@ def concert_detail(concert_id):
 
 
 @main.route('/concert/<concert_id>/edit', methods=['GET', 'POST'])
+@login_required
 def edit_concert(concert_id):
     """Edit Concert details"""
     concert = Concert.query.get(concert_id)

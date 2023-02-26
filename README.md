@@ -1,12 +1,26 @@
-# Final Assignment: Concert Calendar
+# ACS 1220 Final Assignment: Discover Music Database
 
-A concert app that allows users to follow their favourite bands/artists, see any upcoming concerts that artists are playing, and add the event to their list of "attending"/upcoming events.  Built using Flask, SQLAlchemy, and WTForms
+A concert app that allows users to create an account and login to follow their favourite artists, see any upcoming concerts that artists are playing, and add the event to their list of "attending"/upcoming events. Built with a framework of Flask, SQLAlchemy, and WTForms
 
-# Run the server:
+## Features:
+
+- User profiles with login authentication
+- Create and edit concerts
+- Create and edit artist profiles
+- Follow favourite artists
+- Attend upcoming concerts
+
+## Run Locally:
+
+in your terminal, run:
 
 ```
 python3 app.py
 ```
 
-# Screenshot:
+## View on Render:
+
+https://discovermusic.onrender.com/
+
+## Screenshots:
 

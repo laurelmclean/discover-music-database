@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>New Concert</h1>
+<h2>New Concert</h2>
 
 <form method="POST" action="{{ url_for('main.new_concert') }}">
     {{ form.csrf_token }}
@@ -10,24 +10,45 @@
 
         {{ form.name.label }}
         {{ form.name }}
+        {% for error in form.name.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.price.label }}
         {{ form.price }}
+        {% for error in form.price.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.venue.label }}
         {{ form.venue }}
+        {% for error in form.venue.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.address.label }}
         {{ form.address }}
+        {% for error in form.address.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.date.label }}
         {{ form.date }}
+        {% for error in form.date.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.artist_playing.label }}
         {{ form.artist_playing }}
+        {% for error in form.artist_playing.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.image.label }}
         {{ form.image }}
+        {% for error in form.image.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
         {{ form.submit }}
 

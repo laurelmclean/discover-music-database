@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>{{ artist.name }}</h1>
+<h2>{{ artist.name }}</h2>
 
 <h2>Edit Artist</h2>
 
@@ -10,22 +10,38 @@
     <fieldset>
         <legend>Please update information:</legend>
 
-            {{ form.name.label }}
-            {{ form.name }}
+        {{ form.name.label }}
+        {{ form.name }}
+        {% for error in form.name.errors %}
+        <p class="error">{{ error }}
+        <p>
+        {% endfor %}
+    
+        {{ form.hometown.label }}
+        {{ form.hometown }}
+        {% for error in form.hometown.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
+        
+        {{ form.genre.label }}
+        {{ form.genre }}
+        {% for error in form.genre.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
+        
+        {{ form.biography.label }}
+        {{ form.biography }}
+        {% for error in form.biography.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
+        
+        {{ form.image.label }}
+        {{ form.image }}
+        {% for error in form.image.errors %}
+        <p class="error">{{ error }}</p>
+        {% endfor %}
 
-            {{ form.hometown.label }}
-            {{ form.hometown }}
-
-            {{ form.genre.label }}
-            {{ form.genre }}
-
-            {{ form.biography.label }}
-            {{ form.biography }}
-
-            {{ form.image.label }}
-            {{ form.image }}
-
-            {{ form.submit }}
+        {{ form.submit }}
     </fieldset>
 </form>
 {% endblock %}

@@ -3,46 +3,38 @@
 
 <h2>{{ artist.name }}</h2>
 
-{% if current_user.is_authenticated %}
-{% if artist not in current_user.favourites %}
-<form action="/favourite/{{ artist.id }}" method="POST">
-    <input type="submit" value="Favourite">
-</form>
-{% else %}
-<form action="/unfavourite/{{ artist.id }}" method="POST">
-    <input type="submit" value="Unfavourite">
-</form>
-{% endif %}
-{% endif %}
-
-<p><img src="{{ artist.image }}" width="400px"></p>
-
 <div class="details">
+    {% if current_user.is_authenticated %}
+    {% if artist not in current_user.favourites %}
+    <form action="/favourite/{{ artist.id }}" method="POST">
+        <input type="submit" value="Favourite">
+    </form>
+    {% else %}
+    <form action="/unfavourite/{{ artist.id }}" method="POST">
+        <input type="submit" value="Unfavourite">
+    </form>
+    {% endif %}
+    {% endif %}
 
-<p><strong>Genre:</strong> {{ artist.genre }}</p>
+    <p><img src="{{ artist.image }}" width="400px"></p>
 
-<p><strong>Hometown:</strong> {{ artist.hometown }}</p>
+    <p><strong>Genre:</strong> {{ artist.genre }}</p>
 
-<p><strong>Biography:</strong> {{ artist.biography }}</p>
+    <p><strong>Hometown:</strong> {{ artist.hometown }}</p>
 
-</div>
+    <p><strong>Biography:</strong> {{ artist.biography }}</p>
 
 <p><strong>Upcoming Concerts</p>
 
 {% if artist.upcoming_concerts %}
-    <ul>
-        {% for concert in artist.upcoming_concerts %}
-        <li><a href="/concert/{{ concert.id }}">{{ concert.name }}</a></li>
-        {% endfor %}
-    </ul>
-    {% else %}
-        <h4>{{ artist.name }} is not playing any upcoming concerts! </h4>
+<ul>
+    {% for concert in artist.upcoming_concerts %}
+    <li><a href="/concert/{{ concert.id }}">{{ concert.name }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<h4>{{ artist.name }} is not playing any upcoming concerts! </h4>
 {% endif%}
-
-
-<form action="/artist/{{ artist.id }}/edit" method="post">
-    <input type="submit" value="Edit" class="detail-button">
-</form>
 
 <p><strong>Fans</p>
 {% if artist.fans %}
@@ -55,5 +47,12 @@
 <h4>{{ artist.name }} does not have any fans! </h4>
 {% endif%}
 
+{% if current_user.is_authenticated %}
+<form action="/artist/{{ artist.id }}/edit" method="post">
+    <input type="submit" value="Edit Artist" class="detail-button">
+</form>
+{% endif%}
+
+</div>
 
 {% endblock %}

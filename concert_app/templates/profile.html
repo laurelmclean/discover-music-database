@@ -2,36 +2,33 @@
 
 {% block content %}
 
+<div class="profile">
 <h2>
     {{ user.username }}'s profile
 </h2>
 
+<h3>Favourite artists:</h3>
 {% if current_user.favourites %}
-    <h3>
-        Favourite artists:
-
     <ul>
         {% for favourite in user.favourites %}
         <li><a href="/artist/{{ favourite.id }}">{{ favourite.name }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
-    <h3>{{ user.username }} has not favourited any artists! </h3>
+    <p><strong>You have not favourited any artists yet! Browse the artists tab to find artists to add to your favourite list. </strong></p>
 {% endif%}
-</h3>
 
+
+<h3>Upcoming concerts:</h3>
 {% if current_user.attending %}
-    <h3>
-        Upcoming concerts:
-
         <ul>
             {% for concert in user.attending %}
             <li><a href="/concert/{{ concert.id }}">{{ concert.name }}</a></li>
             {% endfor %}
         </ul>
-    </h3>
 {% else %}
-    <h3>{{ user.username }} is not attending any concerts! </h3>
+    <p><strong>You are not yet attending any concerts! Browse the concerts page to find upcoming concerts to attend.</strong></p>
 {% endif%}
+</div>
 
 {% endblock %}
