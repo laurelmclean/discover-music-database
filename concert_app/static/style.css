@@ -1,5 +1,5 @@
 body {
-    background-color: #67acf8;
+    background-color: #FFECD1;
     font-size: 18px;
     font-family: Helvetica, sans-serif;
     line-height: 1.5;
@@ -53,7 +53,7 @@ h1 {
     font-family: helvetica, sans-serif;
     font-size: 4em;
     text-transform: uppercase;
-    margin-top: 0.5em;
+    margin-top: 0.25em;
     margin-left: 0.5em;
     margin-bottom: 0;
 }
@@ -106,9 +106,20 @@ img {
     color: white;
 }
 
-.header nav {
-    margin-left: 2em;
-    padding-right: 2em;
+.nav-tabs {
+    display: flex;
+    justify-content: left;
+    margin-left: 1.5em;
+    font-size: 24px;
+    gap: 24px;
+}
+
+.nav-profile {
+    display: flex;
+    justify-content: right;
+    margin-right: 2em;
+    font-size: 24px;
+    gap: 24px;
 }
 
 .details a {
@@ -155,12 +166,13 @@ img {
 
  .artist a{
     color: #041c36;
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: 100;
  }
 
  .artist a:hover {
     font-weight: 400;
+    text-decoration: underline;
 }
 
 .concert {

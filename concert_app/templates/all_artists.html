@@ -8,7 +8,10 @@
     <section>
         <a href="/artist/{{ artist.id }}">
         <img src="{{ artist.image }}" height="250px">
-        {{ artist.name }}</a>
+        {{ artist.name }}
+        <br />
+        {{artist.genre}}
+        </a>
     </section>
 
 {% endfor %}

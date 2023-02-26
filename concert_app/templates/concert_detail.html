@@ -37,7 +37,7 @@
     {% endfor %}
 </ul>
 {% else %}
-<h4>{{ concert.name }} does not have anyone attending!</h4>
+<h4>{{ concert.name }} does not have anyone attending yet - be the first!</h4>
 {% endif%}
 
 {% if current_user.is_authenticated %}

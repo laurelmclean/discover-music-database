@@ -7,7 +7,7 @@
     {% if current_user.is_authenticated %}
     {% if artist not in current_user.favourites %}
     <form action="/favourite/{{ artist.id }}" method="POST">
-        <input type="submit" value="Favourite">
+        <input type="submit" value="🤍 Favourite">
     </form>
     {% else %}
     <form action="/unfavourite/{{ artist.id }}" method="POST">
@@ -44,7 +44,7 @@
     {% endfor %}
 </ul>
 {% else %}
-<h4>{{ artist.name }} does not have any fans! </h4>
+<h4>{{ artist.name }} does not have any fans yet - be the first! </h4>
 {% endif%}
 
 {% if current_user.is_authenticated %}

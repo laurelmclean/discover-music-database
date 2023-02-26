@@ -8,7 +8,10 @@
         <section>
             <a href="/concert/{{ concert.id }}">
                 <img src="{{ concert.image }}" height="250px">
-                {{ concert.name }}</a>
+                {{ concert.name }}
+                <br />
+                {{concert.date}}
+                </a>
         </section>
         {% endfor %}
 </div>

@@ -1,16 +1,36 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<p><em>Follow your favourite bands and find out about their upcoming concerts!</em></p>
+<h2>About</h2>
 
-<h2>All Concerts</h2>
+<div class="about">
+
+<h3><em>Discover your sound with Discover Music.</em></h3>
+
+    <p>Welcome to Discover Music, the ultimate online destination for music lovers! Our website provides a platform for users
+    to explore their favorite artists, discover new music, and stay up-to-date on upcoming concerts and events.</p>
+    <p>With Discover Music, you can easily create a personalized account to start browsing and following your favorite artists.
+    Once you've created an account, you can search for your favorite artists and follow them to stay up to date on their
+ upcoming concerts.</p>
+    <p>One of the most exciting features of Discover Music is our concert discovery tool, so you can easily find out when your favorite artists are performing
+    near you. With just a few clicks, you can RSVP to attend concerts and events directly through our website.</p>
+    <p>At Discover Music, we're passionate about music and we're committed to helping you discover and enjoy the best music
+    from around the world. Whether you're a casual listener or a die-hard music fan, our website has everything you need to
+    stay up-to-date on the latest music trends and events.</p>
+    <p>So what are you waiting for? Sign up for a free account today and start exploring the world of music like never before!</p>
+</div>
+
+<h2>Upcoming Concerts</h2>
 
 <div class="concert">
         {% for concert in all_concerts %}
         <section>
             <a href="/concert/{{ concert.id }}">
                 <img src="{{ concert.image }}" height="250px">
-                {{ concert.name }}</a>
+                {{ concert.name }}
+                <br />
+                {{concert.date}}
+            </a>
         </section>
 
         {% endfor %}
