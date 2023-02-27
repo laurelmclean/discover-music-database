@@ -9,11 +9,11 @@ class ArtistForm(FlaskForm):
     """Form for adding/updating a new Artist."""
 
     name = StringField('Artist Name', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
+        min=3, max=80, message="The name needs to be between 3 and 80 chars")])
     hometown = StringField('Hometown', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
+        min=3, max=80, message="The hometown needs to be between 3 and 80 chars")])
     genre = StringField('Genre', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
+        min=3, max=80, message="The genre needs to be between 3 and 80 chars")])
     biography = StringField('Biography', validators=[DataRequired(), Length(
         min=3, max=3000, message="The biography must be less than 3000 chars")])
     image = StringField('Image URL')
@@ -24,16 +24,14 @@ class ConcertForm(FlaskForm):
     """Form for adding/updating a Concert."""
 
     name = StringField('Concert Name', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
+        min=3, max=80, message="The name needs to be between 3 and 80 chars")])
     image = StringField('Image URL')
-    price = FloatField('Price', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
+    price = FloatField('Price', validators=[DataRequired()])
     venue = StringField('Venue Name', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
+        min=3, max=80, message="The venue name needs to be between 3 and 80 chars")])
     address = StringField('Address', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
-    date = DateField('Concert Date', validators=[DataRequired(), Length(
-        min=3, max=80, message="The city name needs to be between 3 and 80 chars")])
+        min=3, max=80, message="The address needs to be between 3 and 80 chars")])
+    date = DateField('Concert Date', validators=[DataRequired()])
     artist_playing = QuerySelectField('Artist Playing',
                                          query_factory=lambda: Artist.query, allow_blank=True)
     submit = SubmitField('Submit')
