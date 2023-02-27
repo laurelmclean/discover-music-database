@@ -24,3 +24,10 @@ https://discovermusic.onrender.com/
 
 ## Screenshots:
 
+![Bands](bands.png)
+
+![details](details.png)
+
+![New Artist](newartist.png)
+
+![Profile](profile.png)
