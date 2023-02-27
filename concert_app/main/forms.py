@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField, FloatField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Length, URL
+from wtforms.validators import DataRequired, Length, NumberRange
 from concert_app.models import Artist, Concert, User
 from wtforms.fields.html5 import DateField
 
@@ -26,7 +26,8 @@ class ConcertForm(FlaskForm):
     name = StringField('Concert Name', validators=[DataRequired(), Length(
         min=3, max=80, message="The name needs to be between 3 and 80 chars")])
     image = StringField('Image URL')
-    price = FloatField('Price', validators=[DataRequired()])
+    price = FloatField('Price', validators=[DataRequired(), NumberRange(
+        min=0, max=500, message="Please enter a number between 0 and 500.")])
     venue = StringField('Venue Name', validators=[DataRequired(), Length(
         min=3, max=80, message="The venue name needs to be between 3 and 80 chars")])
     address = StringField('Address', validators=[DataRequired(), Length(
