@@ -1,4 +1,4 @@
-# ACS 1220 Final Assignment: Discover Music Database
+# Discover Music Database
 
 A concert app that allows users to create an account and login to follow their favourite artists, see any upcoming concerts that artists are playing, and add the event to their list of "attending"/upcoming events. Built with a framework of Flask, SQLAlchemy, and WTForms
 

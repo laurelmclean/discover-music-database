@@ -5,15 +5,15 @@
 
 <div class="details">
     {% if current_user.is_authenticated %}
-    {% if artist not in current_user.favourites %}
-    <form action="/favourite/{{ artist.id }}" method="POST">
-        <input type="submit" value="🤍 Favourite">
-    </form>
-    {% else %}
-    <form action="/unfavourite/{{ artist.id }}" method="POST">
-        <input type="submit" value="Unfavourite">
-    </form>
-    {% endif %}
+        {% if artist not in current_user.favourites %}
+            <form action="/favourite/{{ artist.id }}" method="POST">
+                <input type="submit" value="🤍 Favourite">
+            </form>
+        {% else %}
+            <form action="/unfavourite/{{ artist.id }}" method="POST">
+                <input type="submit" value="Unfavourite">
+            </form>
+        {% endif %}
     {% endif %}
 
     <p><img src="{{ artist.image }}" width="400px"></p>

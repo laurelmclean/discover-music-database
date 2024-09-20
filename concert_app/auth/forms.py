@@ -6,7 +6,7 @@ from concert_app.extensions import bcrypt
 
 
 class SignUpForm(FlaskForm):
-    username = StringField('User Name',
+    username = StringField('Username',
                            validators=[DataRequired(), Length(min=3, max=50)])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Sign Up')
@@ -19,7 +19,7 @@ class SignUpForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField('User Name',
+    username = StringField('Username',
                            validators=[DataRequired(), Length(min=3, max=50)])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Log In')
